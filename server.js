@@ -6,6 +6,8 @@ const cors = require('cors')
 app.use(express.json())
 app.use(cors())
 
+const reasonsToStayWithF25 = 'cause leaving is kinda mid tbh'
+
 var Rollbar = require('rollbar')
 var rollbar = new Rollbar({
   accessToken: '2a74f8520e3c4a45917b191ea7717479',
@@ -17,6 +19,8 @@ var rollbar = new Rollbar({
 rollbar.log('Hello world!')
 
 const students = ['Jimmy', 'Timothy', 'Jimothy']
+
+
 
 app.get('/', (req, res) => {
     rollbar.info('hey')
@@ -58,6 +62,13 @@ app.delete('/api/students/:index', (req, res) => {
     students.splice(targetIndex, 1)
     rollbar.info('student was deleted')
     res.status(200).send(students)
+
+    try {
+        
+    } catch (error) {
+        
+    }
+
 })
 
 const port = process.env.PORT || 5050
